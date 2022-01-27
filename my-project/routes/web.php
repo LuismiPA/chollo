@@ -20,7 +20,7 @@ Route::get('destacados', [PagesController::class,'destacados'])->name('destacado
 
 Route::get('chollo',[PagesController::class,'chollo'])->name('chollo');
     Route::get('formChollo', [PagesController::class,'formChollo'])->name("formChollo");
-    Route::get('crearChollo', [PagesController::class,'crearChollo']) ->name("crearChollo");
+    Route::post('crearChollo', [PagesController::class,'crearChollo']) ->name("crearChollo");
 
 
 /* Route::get('/', function () {

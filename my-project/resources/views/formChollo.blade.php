@@ -2,7 +2,9 @@
 
 @section('contenido')
 <h1 class="text-center">Detalles chollo</h1>
-<form action="{{ route('crearChollo') }}" class="w-50 m-auto" method="POST">
+<form action="{{ route('crearChollo') }}" class="w-50 m-auto" method="GET">
+    @csrf
+    {{ route('crearChollo') }}
     <div class="form-row">
     @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
         <div class="form-group col-md-6">

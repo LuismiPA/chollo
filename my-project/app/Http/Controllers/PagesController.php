@@ -23,10 +23,10 @@ class PagesController extends Controller
         return view('destacados');
     }
 
-    public function chollos()
+   /*  public function chollos()
     {
         return view('chollos');
-    }
+    } */
 
         public function formChollo(){
             return view('formChollo');
@@ -43,10 +43,18 @@ class PagesController extends Controller
             $cholloNuevo-> puntuacion=$request->puntuacion;
             $cholloNuevo-> precio=$request->precio;
             $cholloNuevo-> precio_descuento=$request->precio_descuento;
-            $cholloNuevo-> disponible=$request->boolean();
+            $cholloNuevo-> disponible=$request->disponible;
 
             $cholloNuevo->save();
 
-            return back()->with('mensaje', 'Chollo agregado');
+            return back()->with('mensaje', 'Chollo agregado'); 
+
+           
+        }
+
+        public function chollos(){
+            $chollos = Chollo::all();
+    
+            return view('chollos',compact('chollos'));
         }
 }
