@@ -10,7 +10,10 @@ class PagesController extends Controller
     //
     public function index()
     {
-        return view('index');
+        /* $chollos = Chollo::all(); */
+        $chollos = Chollo::paginate(6);
+        
+        return view('index',compact('chollos'));
     }
 
     public function nuevos()
@@ -22,11 +25,6 @@ class PagesController extends Controller
     {
         return view('destacados');
     }
-
-   /*  public function chollos()
-    {
-        return view('chollos');
-    } */
 
         public function formChollo(){
             return view('formChollo');
@@ -51,10 +49,10 @@ class PagesController extends Controller
 
            
         }
+        public function detalles($id){
+            $chollo=Chollo::findOrFail($id);
 
-        public function chollos(){
-            $chollos = Chollo::all();
-    
-            return view('chollos',compact('chollos'));
+            return view('chollo', compact('chollo'));
         }
+
 }

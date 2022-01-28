@@ -1,10 +1,14 @@
 @extends('estatico')
 
 @section('contenido')
-<h1 class="text-center">Detalles chollo</h1>
-<form action="{{ route('crearChollo') }}" class="w-50 m-auto" method="GET">
+<h1 class="text-center mt-5">Detalles chollo</h1>
+<form action="{{ route('crearChollo') }}" class="w-50 m-auto" method="POST">
     @csrf
-    {{ route('crearChollo') }}
+    @if(session('mensaje'))
+    <div class="mensaje-nota-creada">
+        <h5 class="text-primary text-center mb-5">{{ session('mensaje') }}</h5>
+    </div>
+@endif
     <div class="form-row">
     @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
         <div class="form-group col-md-6">
@@ -41,8 +45,8 @@
         
         <div class="form-group col-md-6"><input type="file" name="imagen" id="imagen" placeholder="Imagen del chollo" class="form-control">
             <select name="disponible" id="disponible" class=" form-control">
-                <option value="true">Disponible</option>
-                <option value="false">No Disponible</option>
+                <option value="1">Disponible</option>
+                <option value="0">No Disponible</option>
             </select>
         </div>
 
