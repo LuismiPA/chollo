@@ -55,4 +55,11 @@ class PagesController extends Controller
             return view('chollo', compact('chollo'));
         }
 
+    /* public function guardarImagen(Request $request){
+        $request->validate([
+            'file'=>'required|image/jpg'
+        ]
+        );
+        return $request->file('file')->store('app/images');
+    } */
 }

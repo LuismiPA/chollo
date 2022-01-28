@@ -23,14 +23,6 @@ Route::get('/',[PagesController::class,'index'])->name('index');
     Route::post('crearChollo', [PagesController::class,'crearChollo']) ->name("crearChollo");
     Route::get('chollo/{id}', [PagesController::class,'detalles'])->name("detalles");
 
-/* Route::get('/', function () {
-    return view('index');
-})->name("index");
 
-Route::get('nuevos', function(){
-    return view('nuevos');
-})->name("nuevos");
+/* Route::get('guardar', [PagesController::class,'guardarImagen'])->name('guardar'); */
 
-Route::get('destacados', function(){
-    return view('destacados');
-})->name("destacados"); */

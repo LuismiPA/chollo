@@ -2,7 +2,10 @@
 
 @section('contenido')
 <h1 class="text-center mt-5">Detalles chollo</h1>
-<form action="{{ route('crearChollo') }}" class="w-50 m-auto" method="POST">
+@error('imagen')
+    <p class="text-danger">{{$message}}</p>
+@enderror
+<form action="{{ route('crearChollo') }}" class="w-50 m-auto" method="POST" enctype="multipart/form-data">
     @csrf
     @if(session('mensaje'))
     <div class="mensaje-nota-creada">
@@ -43,7 +46,10 @@
         </div>
         
         
-        <div class="form-group col-md-6"><input type="file" name="imagen" id="imagen" placeholder="Imagen del chollo" class="form-control">
+        <div class="form-group col-md-6">
+            {{-- <form action="{{ route('guardar') }}" method="POST" enctype="multipart/form-data"> --}}
+                <input type="file" name="imagen" id="imagen" placeholder="Imagen del chollo" class="form-control" accept=".jpg">
+            {{-- </form> --}}
             <select name="disponible" id="disponible" class=" form-control">
                 <option value="1">Disponible</option>
                 <option value="0">No Disponible</option>
