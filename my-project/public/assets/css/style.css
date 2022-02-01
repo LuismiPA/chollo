@@ -57,6 +57,6 @@ a[class~="enlaceIndex"]:hover {
     background-repeat: no-repeat;
     background-position: center;
     margin: 4px auto;
-    width: 100%;
+    width: calc(100% - 20px);
     height: 300px;
 }

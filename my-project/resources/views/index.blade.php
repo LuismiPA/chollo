@@ -1,7 +1,14 @@
 @extends('estatico')
-
+@section('title')
+{{$title}}
+@endsection
 @section('contenido')
-<h1 class="text-center mb-5">OFERTAS SUPERMEGAGUACHIS</h1>
+<h1 class="text-center mb-5 text-primary">{{$titulo}}</h1>
+@if(session('mensaje'))
+    <div class="mensaje-nota-creada">
+        <h5 class="text-primary text-center mb-5">{{ session('mensaje') }}</h5>
+    </div>
+@endif
 <div class="row row-cols-1 row-cols-md-3 container ml-auto mr-auto ">
     @foreach ($chollos as $chollo)
                 <div class="col mb-4 tarjeta mb-4 ">
@@ -15,11 +22,23 @@
                           <p class="card-text precioOferta d-inline ml-2">{{$chollo->precio_descuento}}</p>
                           <p class="descripcionTarjeta card-text ">{{$chollo->descripcion}}</p>
                         </div>
+                        <div class="ml-4 mb-4">
+                          <a href={{route("editar",$chollo->id)}}><button class="btn btn-primary">Editar</button></a>
+                          <form action="{{ route('eliminar', $chollo->id) }}" method="POST" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+                            <a href={{route("eliminar",$chollo->id)}}><button class="btn btn-danger">Borrar</button></a>
+                          </form>                       
+                          </div>
                       </div>
                   </a>
                 </div>
             @endforeach    
     </div>
+    <div class="d-flex justify-content-center">
+      {{$chollos->links()}}
+      {{-- editar esta carpeta para cambiar la paginacion my-project\vendor\laravel\framework\src\Illuminate\Pagination\resources\views\tailwind.blade.php --}}
+  </div>
     <script src="{{asset('assets/js/imagenTarjeta.js')}}"></script>
     
     {{-- <div class="card" style="width: 18rem;">

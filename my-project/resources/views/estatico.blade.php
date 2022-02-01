@@ -19,13 +19,15 @@
           <div class="navegador collapse navbar-collapse my-auto justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-item nav-link text-white" href={{ route('index') }}>Inicio</a>
-              <a class="nav-item nav-link text-white" href={{ route('nuevos') }}>Nuevos</a>
-              <a class="nav-item nav-link text-white" href={{ route('destacados') }}>Destacados</a>
+              <a class="nav-item nav-link text-white" href={{ route('index' , 'nuevos') }}>Nuevos</a>
+              <a class="nav-item nav-link text-white" href={{ route('index' , 'destacados') }}>Destacados</a>
               <a class="nav-item nav-link text-white" href={{ route('formChollo') }}>NuevoProducto</a>
             </div>
           </div>
         </nav>
         
+        @yield('name')
+
         @yield('contenido')
         
         <footer>

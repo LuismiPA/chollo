@@ -13,6 +13,15 @@
             <h5 class="precioAntes d-inline">{{$chollo->precio}} </h5>
             <h5 class="precioOferta d-inline ml-2">{{$chollo->precio_descuento}}</h5>
             <h5><a href={{$chollo->url}}>Enlace al CHOLLO</a></h5>
+            
+            <div class="ml-4 mb-4">
+                <a href={{route("editar",$chollo->id)}}><button class="btn btn-primary">Editar</button></a>
+                <form action="{{ route('eliminar', $chollo->id) }}" method="POST" class="d-inline">
+                  @method('DELETE')
+                  @csrf
+                  <a href={{route("eliminar",$chollo->id)}}><button class="btn btn-danger">Borrar</button></a>
+                </form>                       
+            </div>
         </div>
     </div>
     <h6 class="mt-4 ml-5 descripcionDetalles">{{ $chollo -> descripcion }}</h6>
